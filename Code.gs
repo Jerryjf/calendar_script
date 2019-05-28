@@ -23,7 +23,7 @@ function makeDuplicate() {
   var dupeCalendar = DriveApp.getFilesByName(spreadsheetName);
   Logger.log(dupeCalendar.hasNext());
   
-  var destFolder = DriveApp.getFoldersByName('backup calendars').next();
+  var destFolder = DriveApp.getFoldersByName('<FOLDER NAME HERE>').next();
   DriveApp.getFileById(ss.getId()).makeCopy('Backup: ' + spreadsheetName, destFolder);
 }
   
