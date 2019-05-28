@@ -28,25 +28,25 @@ function makeDuplicate() {
 }
   
 /**
- * function to download specific range of the spreadsheet to send to accounts
+ * function to download specific range of the spreadsheet as PDF
  */
 
 function exportSheetAsPDF() {
   var ogSS = SpreadsheetApp.getActive(); // grab original spreadsheet
   var sheet = ogSS.getActiveSheet();
   
-  var sourceRange = sheet.getRange('A1:I36').activate(); // this is where i select columns i want to export from sheet
+  var sourceRange = sheet.getRange('<YOUR DESIRED CELL RANGE HERE>').activate(); // this is where i select columns i want to export from sheet
   var sourceValues = sourceRange.getValues();
   Logger.log(sourceValues);
   
   var sheetName = sheet.getName() + ' Content Calendar';
-  var folder = DriveApp.getFoldersByName('2019').next();
+  var folder = DriveApp.getFoldersByName('<YOUR FOLDER NAME HERE>').next();
   
   // temporary spreadsheet to put range in for download
-  var destSS = SpreadsheetApp.open(DriveApp.getFileById(ogSS.getId()).makeCopy('tmp_pdf_ss'));
+  var destSS = SpreadsheetApp.open(DriveApp.getFileById(ogSS.getId()).makeCopy('<NAME OF TEMPORARY SPREADSHEET>'));
   var destSheet = destSS.getSheets()[0];
   
-  var destRange = destSheet.getRange('A1:I36');
+  var destRange = destSheet.getRange('<YOUR DESIRED CELL RANGE HERE>');
   destRange.setValues(sourceValues);
   Logger.log(destRange);
   
